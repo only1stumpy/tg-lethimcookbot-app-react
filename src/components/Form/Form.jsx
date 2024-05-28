@@ -3,11 +3,11 @@ import './Form.css';
 import { useTelegram } from "../../hooks/useTelegram";
 
 const Form = () => {
-  const [nickname, setNickname] = useState('хуесос');
+  const [nickname, setNickname] = useState('');
   const [age, setAge] = useState("");
   const [desc, setDesc] = useState('');
   const { user, tg } = useTelegram();
-  const [username, setUsername] = useState(tg.initDataUnsafe?.user?.username);
+  const [username, setUsername] = useState(user?.username);
 
   const onSendData = useCallback(async () => {
     const data = {
