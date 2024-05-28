@@ -7,7 +7,7 @@ const Form = () => {
   const [age, setAge] = useState("");
   const [desc, setDesc] = useState('');
   const { user, tg } = useTelegram();
-  const username = user?.username;
+  const username = tg.initDataUnsafe?.user?.username;
 
   const onSendData = useCallback(async () => {
     const data = {
