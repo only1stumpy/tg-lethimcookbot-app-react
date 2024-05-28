@@ -18,16 +18,14 @@ const Form = () => {
   });
 
   const onSendData = useCallback(async () => {
-    const photoBase64 = photo ? await toBase64(photo) : '';
     const data = {
       username,
       nickname,
       age,
       desc,
-      photo: photoBase64
     };
     tg.sendData(JSON.stringify(data));
-  }, [username, nickname, age, desc, photo]);
+  }, [username, nickname, age, desc]);
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
@@ -62,9 +60,6 @@ const Form = () => {
     setDesc(e.target.value);
   };
 
-  const onChangePhoto = (e) => {
-    setPhoto(e.target.files[0]);
-  };
 
   return (
     <div className={"form"}>
@@ -89,11 +84,6 @@ const Form = () => {
         placeholder={'Почему вы решили вступить к нам?'}
         value={desc}
         onChange={onChangeDesc}
-      />
-      <input
-        className={'input'}
-        type="file"
-        onChange={onChangePhoto}
       />
     </div>
   );
