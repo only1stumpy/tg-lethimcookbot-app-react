@@ -17,7 +17,7 @@ const Form = () => {
       desc,
     };
     tg.sendData(JSON.stringify(data));
-  }, [nickname, age, desc]);
+  }, [username, nickname, age, desc]);
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
@@ -51,6 +51,9 @@ const Form = () => {
   const onChangeDesc = (e) => {
     setDesc(e.target.value);
   };
+  const onChangeUsername  =  (e)  =>  {
+    setUsername(e.target.value);
+  }
 
 
   return (
@@ -76,6 +79,13 @@ const Form = () => {
         placeholder={'Почему вы решили вступить к нам?'}
         value={desc}
         onChange={onChangeDesc}
+      />
+      <input
+        className={'input'}
+        type="text"
+        placeholder={'Тег телеграма'}
+        value={username}
+        onChange={onChangeUsername}
       />
     </div>
   );
