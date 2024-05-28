@@ -6,16 +6,8 @@ const Form = () => {
   const [nickname, setNickname] = useState('');
   const [age, setAge] = useState("");
   const [desc, setDesc] = useState('');
-  const [photo, setPhoto] = useState(null);
   const { user, tg } = useTelegram();
-  const username = user?.username;
-
-  const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
+  const username = user.username;
 
   const onSendData = useCallback(async () => {
     const data = {
