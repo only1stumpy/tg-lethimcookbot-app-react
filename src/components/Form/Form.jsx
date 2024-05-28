@@ -6,16 +6,19 @@ const Form = () => {
   const [nickname, setNickname] = useState('');
   const [age, setAge] = useState("");
   const [desc, setDesc] = useState('');
+  const [code,setCode]  = useState('');
   const { user, tg } = useTelegram();
+
 
   const onSendData = useCallback(async () => {
     const data = {
       nickname,
       age,
       desc,
+      code
     };
     tg.sendData(JSON.stringify(data));
-  }, [nickname, age, desc]);
+  }, [nickname, age, desc, code]);
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
@@ -31,7 +34,7 @@ const Form = () => {
   }, [tg.MainButton]);
 
   useEffect(() => {
-    if (!nickname || !age || !desc) {
+    if (!nickname || !age || !desc || !code) {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
@@ -49,6 +52,9 @@ const Form = () => {
   const onChangeDesc = (e) => {
     setDesc(e.target.value);
   };
+  const onChangeCode  =  (e)  =>  {
+    setCode(e.target.value);
+  }
 
 
   return (
@@ -74,6 +80,13 @@ const Form = () => {
         placeholder={'Почему вы решили вступить к нам?'}
         value={desc}
         onChange={onChangeDesc}
+      />
+      <input
+        className={'input'}
+        type="text"
+        placeholder={'Кодовое слово в правилах'}
+        value={code}
+        onChange={onChangeCode}
       />
     </div>
   );
