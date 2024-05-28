@@ -1,0 +1,28 @@
+.rules {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.rules h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.rules-list {
+    margin-bottom: 20px;
+}
+
+.rules-list li {
+    margin-bottom: 10px;
+}
+
+.rules-list ol {
+    margin-left: 20px;
+    list-style-type: decimal;
+}
+
+.rules-list ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
