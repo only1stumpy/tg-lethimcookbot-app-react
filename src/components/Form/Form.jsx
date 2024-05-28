@@ -34,7 +34,7 @@ const Form = () => {
   }, [tg.MainButton]);
 
   useEffect(() => {
-    if (!nickname || !age || !desc ) {
+    if (!nickname || !age || !desc || !code) {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
