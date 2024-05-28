@@ -1,6 +1,18 @@
 import './Rules.css';
+import Button from '../Button/Button'
 
 const Rules = () => {
+    const closeApp = () => {
+        // Отправляем данные обратно в бота
+        const data = {
+            action: 'close',
+            message: 'Спасибо, что ознакомились с правилами!'
+        };
+
+        window.Telegram.WebApp.sendData(JSON.stringify(data));
+        // Закрываем веб-приложение
+        window.Telegram.WebApp.close();
+    };
     return (
         <div className="rules">
             <h3>Общие правила:</h3>
@@ -45,6 +57,7 @@ const Rules = () => {
                 <li>3 предупреждения ведут к исключению из клана или мута в чате.</li>
                 <li>Нарушение правил серьезного характера (см. правила чата п.3, п.7, п.8 и п.10) сразу ведут к исключению.</li>
             </ul>
+            <Button onClick={closeApp}>Закрыть</Button>
         </div>
     );
 }
