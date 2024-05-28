@@ -13,8 +13,7 @@ function App() {
     }, [])
 
     return (
-        <div className="App">
-            <Header />
+        <div>
             <Routes>
                 <Route index element={<Rules />}/>
                 <Route path={'form'} element={<Form />}/>
