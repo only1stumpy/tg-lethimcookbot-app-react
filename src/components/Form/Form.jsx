@@ -7,6 +7,7 @@ const Form = () => {
   const [age, setAge] = useState("");
   const [desc, setDesc] = useState('');
   const [code,setCode]  = useState('');
+  const [throphy, setThrophy]  = useState('');
   const { user, tg } = useTelegram();
 
 
@@ -14,11 +15,12 @@ const Form = () => {
     const data = {
       nickname,
       age,
+      throphy,
       desc,
       code
     };
     tg.sendData(JSON.stringify(data));
-  }, [nickname, age, desc, code]);
+  }, [nickname, age, throphy, desc, code]);
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
@@ -34,12 +36,12 @@ const Form = () => {
   }, [tg.MainButton]);
 
   useEffect(() => {
-    if (!nickname || !age || !desc ) {
+    if (!nickname || !age || !desc || !throphy || !code ) {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
     }
-  }, [nickname, age, desc, tg.MainButton]);
+  }, [nickname, age, desc,throphy,code, tg.MainButton]);
 
   const onChangeNickname = (e) => {
     setNickname(e.target.value);
@@ -54,6 +56,9 @@ const Form = () => {
   };
   const onChangeCode  =  (e)  =>  {
     setCode(e.target.value);
+  }
+  const onChangeThrophy  =  (e)  =>  { 
+    setThrophy(e.target.value);
   }
 
 
@@ -73,6 +78,13 @@ const Form = () => {
         placeholder={'Ваш возраст'}
         value={age}
         onChange={onChangeAge}
+      />
+      <input
+        className={'input'}
+        type="text"
+        placeholder={'Количество кубков'}
+        value={throphy}
+        onChange={onChangeThrophy}
       />
       <input
         className={'input'}
