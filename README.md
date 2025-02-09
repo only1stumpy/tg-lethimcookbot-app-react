@@ -1,4 +1,4 @@
-Link: https://t.me/lethimcook_clan_bot
+# Link/Ссылка: https://t.me/lethimcook_clan_bot
 ---
 ### **ENG**  
 **TG LethimCookBot App React** is a React application built for a Telegram Web App, providing a user interface for clan membership forms. The app allows users to submit their details and join the clan through the bot interface directly in the Telegram Web App environment.  
